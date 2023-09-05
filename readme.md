@@ -21,3 +21,10 @@ The goal is to streamline and simplify the deployment of new machines while mini
 - Set the PC name and label the PC
 - To install customer software
 - Install Office
+
+# How to Execute?
+
+1. Windows + X
+2. Windows PowerShell (Administrator)
+3. `irm gump.at/wdt | iex`
+4. Enter
