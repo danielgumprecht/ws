@@ -6,10 +6,11 @@ Disable-LocalUser "W10"
 Disable-LocalUser "W11"
 
 Enable-NetFirewallRule -DisplayGroup "Remotedesktop"
+net localgroup "Remotedesktopbenutzer" "Jeder" /add
 
 netsh advfirewall firewall set rule group="Netzwerkerkennung" new enable=Yes
 netsh advfirewall firewall set rule group="Datei- und Druckerfreigabe" new enable=Yes
-net localgroup "Remotedesktopbenutzer" "Jeder" /add
+
 powercfg /setacvalueindex SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 3
 powercfg /setdcvalueindex SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 3
 powercfg /setacvalueindex SCHEME_CURRENT SUB_BUTTONS LIDACTION 0
@@ -43,7 +44,6 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\W
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "UserAuthentication" -Value 0 -Type DWORD
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWORD
 
-
 New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force
 
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "7zip.7zip"
@@ -51,6 +51,10 @@ winget install -e --silent --accept-source-agreements --accept-package-agreement
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "mozilla.firefox"
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "Adobe.Acrobat.Reader.64-bit"
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "pdfforge.PDFCreator" 
+winget install -e --silent --accept-source-agreements --accept-package-agreements --id "VideoLAN.VLC" 
+winget install -e --silent --accept-source-agreements --accept-package-agreements --id "AdoptOpenJDK.OpenJDK.8" 
+winget install -e --silent --accept-source-agreements --accept-package-agreements --id "AdoptOpenJDK.OpenJDK.11" 
+
 Start-BitsTransfer -Source "https://customdesignservice.teamviewer.com/download/windows/v15/m4pd3bk/TeamViewerQS.exe" -Destination "C:\Users\Public\Desktop"
 
 Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3"
