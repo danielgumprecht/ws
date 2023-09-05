@@ -66,7 +66,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3"
 
 Stop-Process -processName: Explorer -force
 
-net use \\ck-wst-host\_Installs /u:install install
-robocopy "\\ck-wst-host\_Installs\AGENT_10_13_6.EXE" "C:\users\administrator\desktop" /E
+net use \\ck-wst-host\agent /u:install install
+robocopy "\\ck-wst-host\agent" "C:\users\administrator\desktop" /E
 
 start "C:\Users\Administrator\Desktop\AGENT_10_13_6.EXE"
