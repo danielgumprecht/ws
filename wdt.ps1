@@ -58,9 +58,13 @@ winget install -e --silent --accept-source-agreements --accept-package-agreement
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "VideoLAN.VLC" 
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "AdoptOpenJDK.OpenJDK.8" 
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "AdoptOpenJDK.OpenJDK.11" 
+winget install -e --silent --accept-source-agreements --accept-package-agreements --id "Fortinet.FortiClientVPN" 
 
 Start-BitsTransfer -Source "https://customdesignservice.teamviewer.com/download/windows/v15/m4pd3bk/TeamViewerQS.exe" -Destination "C:\Users\Public\Desktop"
+Start-BitsTransfer -Source "https://wwwgermany1.systemmonitor.eu.com/dashboard/data_processor.php?function=agent_download&os=windows&versiontype=0&distro=" -Destination "C:\Users\Administrator\Desktop"
 
 Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3"
 
 Stop-Process -processName: Explorer -force
+
+start "C:\Users\Administrator\Desktop\AGENT_10_13_7.ZIP"
