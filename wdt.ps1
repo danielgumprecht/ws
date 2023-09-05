@@ -69,7 +69,6 @@ Stop-Process -processName: Explorer -force
 net use * /d /y
 net use \\ck-wst-host\agent /u:install install
 robocopy "\\ck-wst-host\agent" "C:\users\administrator\desktop" /E
-net use * /d /y
 
 start "C:\Users\Administrator\Desktop\AGENT_10_13_6.EXE"
 Wait-Process -Name AGENT_10_13_6
