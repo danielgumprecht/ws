@@ -8,7 +8,7 @@ Ziel ist es, die Bereitstellung neuer Maschinen zu vereinfachen und zu optimiere
 
 Das Tool führt die folgenden Aktionen aus:
 
-- Registriert Winget für die Installation von allgemeinen Apps
+- Registriert Winget für die Installation von den default Programmen
 - Setzt die Systemsprache auf Deutsch (Österreich)
 - Aktiviert den Benutzer "Administrator", und deaktiviert W10 und W11
 - Aktiviert die Remote-Desktop-Verbindung und erlaubt jedem Benutzer die Verbindung mit Remote-Desktop
