@@ -52,7 +52,7 @@ New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2
 
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "7zip.7zip"
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "Google.Chrome"
-winget install -e --silent --accept-source-agreements --accept-package-agreements --id "mozilla.firefox"
+winget install -e --silent --accept-source-agreements --accept-package-agreements --id "Mozilla.Firefox"
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "Adobe.Acrobat.Reader.64-bit"
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "pdfforge.PDFCreator" 
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "VideoLAN.VLC" 
