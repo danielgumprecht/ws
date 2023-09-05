@@ -1,6 +1,10 @@
 
 Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
 
+Set-WinSystemLocale de-AT
+Set-WinUILanguageOverride -Language de-AT
+Set-WinUserLanguageList de-AT -Force
+
 Enable-LocalUser "Administrator"
 Disable-LocalUser "W10"
 Disable-LocalUser "W11"
