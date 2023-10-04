@@ -65,12 +65,3 @@ Start-BitsTransfer -Source "https://customdesignservice.teamviewer.com/download/
 Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3"
 
 Stop-Process -processName: Explorer -force
-
-net use * /d /y
-net use \\ck-wst-host\agent /u:install install
-robocopy "\\ck-wst-host\agent" "C:\users\administrator\desktop" /E
-
-start "C:\Users\Administrator\Desktop\AGENT_10_13_6.EXE"
-Wait-Process -Name AGENT_10_13_6
-
-Remove-Item "C:\Users\Administrator\Desktop\AGENT_10_13_6.EXE"
