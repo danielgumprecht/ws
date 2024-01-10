@@ -9,6 +9,11 @@ Enable-LocalUser "Administrator"
 Disable-LocalUser "W10"
 Disable-LocalUser "W11"
 
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Value 1
+Set-Itemproperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'HideFileExt' -Value 0
+
+stop-process -name explorer –force
+
 schtasks /Change /TN "Microsoft\Windows\Server Manager\ServerManager"  /Disable
 Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
 sc.exe config NlaSvc start=delayed-auto
