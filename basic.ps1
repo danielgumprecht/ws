@@ -9,6 +9,7 @@ Enable-LocalUser "Administrator"
 Disable-LocalUser "W10"
 Disable-LocalUser "W11"
 
+schtasks /Change /TN "Microsoft\Windows\Server Manager\ServerManager"  /Disable
 Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
 sc.exe config NlaSvc start=delayed-auto
 
