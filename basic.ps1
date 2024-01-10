@@ -9,6 +9,9 @@ Enable-LocalUser "Administrator"
 Disable-LocalUser "W10"
 Disable-LocalUser "W11"
 
+Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
+sc.exe config NlaSvc start=delayed-auto
+
 Enable-NetFirewallRule -DisplayGroup "Remotedesktop"
 net localgroup "Remotedesktopbenutzer" "Jeder" /add
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0 -Type DWORD
@@ -18,6 +21,8 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\W
 netsh advfirewall firewall set rule group="Netzwerkerkennung" new enable=Yes
 netsh advfirewall firewall set rule group="Datei- und Druckerfreigabe" new enable=Yes
 
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
 
 if( -not (Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization")){
     New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization"
