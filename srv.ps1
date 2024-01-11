@@ -12,4 +12,3 @@ Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
 Enable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol" -All
 sc.exe config nlasvc depend= NSI/RpcSs/TcpIp/Dhcp/Eventlog/DNS
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters" -Name "AlwaysExpectDomainController" -Value 1 -Type DWORD
-Add-WindowsFeature Windows-Server-Backup -IncludeManagementTools -Restart
