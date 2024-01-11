@@ -1,11 +1,15 @@
+Uninstall-WindowsFeature -Name Windows-Defender
+
+Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+Install-WindowsFeature DHCP -IncludeManagementTools
+Install-WindowsFeature DNS -IncludeManagementTools
+Install-WindowsFeature Print-Server -IncludeManagementTools
+Install-WindowsFeature Web-Mgmt-Console -IncludeManagementTools
 Install-WindowsFeature Search-Service
-Install-WindowsFeature Telnet-Client
 Install-WindowsFeature TFTP-Client
 Add-WindowsFeature Windows-Server-Backup -IncludeManagementTools -Restart
 Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
-n
-
 Enable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol" -All
-n
-
-Uninstall-WindowsFeature -Name Windows-Defender
+sc.exe config nlasvc depend= NSI/RpcSs/TcpIp/Dhcp/Eventlog/DNS
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters" -Name "AlwaysExpectDomainController" -Value 1 -Type DWORD
+Add-WindowsFeature Windows-Server-Backup -IncludeManagementTools -Restart
