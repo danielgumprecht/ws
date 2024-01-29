@@ -12,7 +12,7 @@ if( -not (Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personaliza
 if( -not (Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer")){New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer"}
 New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force
 
-schtasks /Change /TN "Microsoft\Windows\Server Manager\ServerManager"  /Disable
+schtasks /Change /TN "Microsoft\Windows\Server Manager\ServerManager" /Disable
 
 Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
 sc.exe config NlaSvc start=delayed-auto
@@ -32,7 +32,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Nam
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Value 0 -Type DWORD
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name "NoLockScreen" -Value 1 -Type DWORD
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Value 1 -Type DWORD
-Set-Itemproperty -path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWORD
+Set-Itemproperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWORD
 
 powercfg /setacvalueindex SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 3
 powercfg /setdcvalueindex SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 3
@@ -66,4 +66,4 @@ Start-BitsTransfer -Source "https://customdesignservice.teamviewer.com/download/
 
 Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3"
 
-stop-process -name explorer –forces
+stop-process -name explorer –force
