@@ -21,7 +21,7 @@ Enable-NetFirewallRule -DisplayGroup "Remotedesktop"
 Enable-NetFirewallRule -DisplayGroup "Netzwerkerkennung"
 Enable-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
 
-net localgroup "Remotedesktopbenutzer" "Jeder" /add
+Add-LocalGroupMember -Group "Remotedesktopbenutzer" -Member "Jeder" -ErrorAction SilentlyContinue
 
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0 -Type DWORD
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "UserAuthentication" -Value 0 -Type DWORD
