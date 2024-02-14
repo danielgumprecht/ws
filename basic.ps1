@@ -12,7 +12,7 @@ if( -not (Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personaliza
 if( -not (Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer")){New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer"}
 New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force
 
-schtasks /Change /TN "Microsoft\Windows\Server Manager\ServerManager"  /Disable
+Disable-ScheduledTask -TaskPath "\Microsoft\Windows\Server Manager" -TaskName "ServerManager" -ErrorAction SilentlyContinue
 
 Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
 sc.exe config NlaSvc start=delayed-auto
