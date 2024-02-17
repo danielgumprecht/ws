@@ -36,6 +36,7 @@ Set-Itemproperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "AllowCortana" -Value 0 -Type DWORD
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value 0 -Type DWORD
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "AllowSearchToUseLocation" -Value 0 -Type DWORD
+Set-ItemProperty -Path "HKCU:\Control Panel\Mouse\" -Name MouseSpeed -Value 0 -Type DWORD
 
 Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
 
