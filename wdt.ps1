@@ -12,7 +12,7 @@ if( -not (Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personaliza
 if( -not (Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer")){New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer"}
 New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force
 
-schtasks /Change /TN "Microsoft\Windows\Server Manager\ServerManager" /Disable
+Disable-ScheduledTask -TaskPath "\Microsoft\Windows\Server Manager" -TaskName "ServerManager" -ErrorAction SilentlyContinue
 
 Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
 sc.exe config NlaSvc start=delayed-auto
@@ -21,7 +21,7 @@ Enable-NetFirewallRule -DisplayGroup "Remotedesktop"
 Enable-NetFirewallRule -DisplayGroup "Netzwerkerkennung"
 Enable-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
 
-net localgroup "Remotedesktopbenutzer" "Jeder" /add
+Add-LocalGroupMember -Group "Remotedesktopbenutzer" -Member "Jeder" -ErrorAction SilentlyContinue
 
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0 -Type DWORD
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "UserAuthentication" -Value 0 -Type DWORD
@@ -34,12 +34,13 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalizatio
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Value 1 -Type DWORD
 Set-Itemproperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWORD
 
+Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
+
 powercfg /setacvalueindex SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 3
 powercfg /setdcvalueindex SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 3
 powercfg /setacvalueindex SCHEME_CURRENT SUB_BUTTONS LIDACTION 0
 powercfg /setdcvalueindex SCHEME_CURRENT SUB_BUTTONS LIDACTION 0
 
-powercfg /hibernate off
 powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 powercfg /change standby-timeout-ac 0
 powercfg /change standby-timeout-dc 0
@@ -49,8 +50,6 @@ powercfg /change hibernate-timeout-ac 0
 powercfg /change hibernate-timeout-dc 0
 powercfg /change monitor-timeout-ac 0
 powercfg /change monitor-timeout-dc 0
-
-New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force
 
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "7zip.7zip"
 winget install -e --silent --accept-source-agreements --accept-package-agreements --id "Google.Chrome"
