@@ -15,6 +15,8 @@ New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2
 Disable-ScheduledTask -TaskPath "\Microsoft\Windows\Server Manager" -TaskName "ServerManager" -ErrorAction SilentlyContinue
 
 Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
+netsh int tcp set global timestamps=disabled
+
 sc.exe config NlaSvc start=delayed-auto
 
 Enable-NetFirewallRule -DisplayGroup "Remotedesktop"
