@@ -6,6 +6,7 @@ Set-WinUILanguageOverride -Language de-AT
 Enable-LocalUser "Administrator"
 Disable-LocalUser "W10" -ErrorAction SilentlyContinue
 Disable-LocalUser "W11" -ErrorAction SilentlyContinue
+Get-LocalUser | Set-LocalUser -PasswordNeverExpires $true
 
 # Disable IPv6
 Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
