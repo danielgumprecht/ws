@@ -1,5 +1,10 @@
 Uninstall-WindowsFeature -Name Windows-Defender
 
+Disable-ScheduledTask -TaskPath "\Microsoft\Windows\Server Manager" -TaskName "ServerManager" -ErrorAction SilentlyContinue
+
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0
+
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 Install-WindowsFeature DHCP -IncludeManagementTools
 Install-WindowsFeature DNS -IncludeManagementTools
