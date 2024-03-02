@@ -15,19 +15,12 @@ Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
 sc.exe config NlaSvc start=delayed-auto
 
 # Enable Firewall Rules
-Enable-NetFirewallRule -DisplayGroup "Remotedesktop"
-Enable-NetFirewallRule -DisplayGroup "Netzwerkerkennung"
-Enable-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
+netsh advfirewall firewall set rule group="Remotedesktop" new enable=yes
+netsh advfirewall firewall set rule group="Netzwerkerkennung" new enable=yes
+netsh advfirewall firewall set rule group="Datei- und Druckerfreigabe" new enable=yess
 
 # Add Any to Remotedesktopbenutzer
 Add-LocalGroupMember -Group "Remotedesktopbenutzer" -Member "Jeder" -ErrorAction SilentlyContinue
-
-# Disable old TLS and SMB 1
-New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" -Name "Enabled" -Value 0 -Force
-New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" -Name "Enabled" -Value 0 -Force
-New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" -Name "DisabledByDefault" -Value 1 -Force
-New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" -Name "DisabledByDefault" -Value 1 -Force
-Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
 
 # Search Adjustments
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "DisableSearchBoxSuggestions" -Value 1 -Force
@@ -47,6 +40,10 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multi
 # Lockscreen Adjustments
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name "NoLockScreen" -Value 1
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "DisableLogonBackgroundImage" -Value 1
+
+# Set Powerbutton to Shutdown
+powercfg /setacvalueindex SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 3
+powercfg /setdcvalueindex SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 3
 
 # Restart Explorer
 Stop-Process -Name "Explorer" -Force

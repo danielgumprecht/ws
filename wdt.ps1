@@ -6,6 +6,7 @@ Set-WinUILanguageOverride -Language de-AT
 Enable-LocalUser "Administrator"
 Disable-LocalUser "W10" -ErrorAction SilentlyContinue
 Disable-LocalUser "W11" -ErrorAction SilentlyContinue
+Get-LocalUser | Set-LocalUser -PasswordNeverExpires $true
 
 # Disable IPv6
 Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
@@ -20,13 +21,6 @@ Enable-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
 
 # Add Any to Remotedesktopbenutzer
 Add-LocalGroupMember -Group "Remotedesktopbenutzer" -Member "Jeder" -ErrorAction SilentlyContinue
-
-# Disable old TLS and SMB 1
-New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" -Name "Enabled" -Value 0 -Force
-New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" -Name "Enabled" -Value 0 -Force
-New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" -Name "DisabledByDefault" -Value 1 -Force
-New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" -Name "DisabledByDefault" -Value 1 -Force
-Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
 
 # Search Adjustments
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "DisableSearchBoxSuggestions" -Value 1 -Force
