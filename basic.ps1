@@ -15,9 +15,9 @@ Disable-NetAdapterBinding -Name * -ComponentID "ms_tcpip6"
 sc.exe config NlaSvc start=delayed-auto
 
 # Enable Firewall Rules
-netsh advfirewall firewall set rule group="Remotedesktop" new enable=yes
-netsh advfirewall firewall set rule group="Netzwerkerkennung" new enable=yes
-netsh advfirewall firewall set rule group="Datei- und Druckerfreigabe" new enable=yess
+Enable-NetFirewallRule -DisplayGroup "Remotedesktop"
+Enable-NetFirewallRule -DisplayGroup "Netzwerkerkennung"
+Enable-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
 
 # Add Any to Remotedesktopbenutzer
 Add-LocalGroupMember -Group "Remotedesktopbenutzer" -Member "Jeder" -ErrorAction SilentlyContinue
