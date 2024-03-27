@@ -1,9 +1,9 @@
 $srv = Read-Host "enter SRV IP"
 
 # Copy User Data
-robocopy "\\$srv\RedirectedFolders\$env:USERNAME\Desktop" "\Users\$env:USERNAME\Desktop" /E /W:0 /V
-robocopy "\\$srv\RedirectedFolders\$env:USERNAME\Eigene Dateien" "\Users\$env:USERNAME\Eigene Dateien" /E /W:0 /V
-robocopy "\\$srv\profile$\$env:USERNAME.V6\Downloads" "\Users\$env:USERNAME\Downloads" /E /W:0 /V
+robocopy "\\$srv\RedirectedFolders\$env:USERNAME\Desktop" "$env:userprofile\Desktop" /E /W:0 /V
+robocopy "\\$srv\RedirectedFolders\$env:USERNAME\Eigene Dateien" "$env:userprofile\Eigene Dateien" /E /W:0 /V
+robocopy "\\$srv\profile$\$env:USERNAME.V6\Downloads" "$env:userprofile\Downloads" /E /W:0 /V
 
 # Copy Edge
 Get-Process -Name msedge -ErrorAction SilentlyContinue | Stop-Process -Force
