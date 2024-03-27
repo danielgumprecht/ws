@@ -5,6 +5,6 @@ $username = Read-Host "Enter the username to delete"
 Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\$username" -Force
 
 # Delete user folder
-Remove-Folder -Path "C:\Users\$username" -Recurse -Force
+Remove-Item -Path "C:\Users\$username" -Recurse -Force
 
 Write-Host "User $username has been deleted."
