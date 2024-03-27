@@ -1,6 +1,5 @@
 $srv = Read-Host "enter SRV IP"
 
-
 # Copy User Data
 robocopy "\\$srv\RedirectedFolders\$env:USERNAME\Desktop" "\Users\$env:USERNAME\Desktop" /E /W:0 /V
 robocopy "\\$srv\RedirectedFolders\$env:USERNAME\Eigene Dateien" "\Users\$env:USERNAME\Eigene Dateien" /E /W:0 /V
