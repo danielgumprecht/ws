@@ -1,14 +1,14 @@
+# Start uninstaller
 start-process "\Program Files (x86)\Advanced Monitoring Agent\unins000.exe\"
 
+# Press keys for
 Start-Sleep -Seconds 1
 
 Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.SendKeys]::SendWait("{LEFT}")
 
-
 Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
-
 
 Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
