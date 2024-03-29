@@ -13,13 +13,14 @@ $services = @(
     "BASupportExpressStandaloneService_LOGICnow",
     "BASupportExpressSrvcUpdater_LOGICnow",
     "Advanced Monitoring Agent"
+)
 
 foreach ($service in $services) {
-    Set-Service -Name $service -StartupType Disabled -ErrorAction Stop
+    Set-Service -Name $service -StartupType Disabled -ErrorAction Continue
 }
 
 # Remove N-able install locations, also removes them from services.msc
-Remove-Item 'C:\Program Files (x86)\Advanced Monitoring Agent GP\' -recurse -force
-Remove-Item 'C:\Program Files (x86)\Advanced Monitoring Agent\' -recurse -force
-Remove-Item 'C:\Program Files (x86)\Take Control Agent\' -recurse -force
+Remove-Item "C:\Program Files (x86)\Advanced Monitoring Agent GP\" -recurse -force -ErrorAction SilentlyContinue
+Remove-Item "C:\Program Files (x86)\Advanced Monitoring Agent\" -recurse -force -ErrorAction SilentlyContinue
+Remove-Item "C:\Program Files (x86)\Take Control Agent\" -recurse -force -ErrorAction SilentlyContinue
 
