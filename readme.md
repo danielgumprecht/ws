@@ -1,34 +1,22 @@
-# Windows Deployment Tool
+# Windows Scripts
 
 This tool is for internal purposes only and is not intended for the general public.
 
-Ziel ist es, die Bereitstellung neuer Maschinen zu vereinfachen und zu optimieren und dabei die Interaktion mit dem Benutzer zu minimieren.
+Ziel ist es, das setzen diverser Einstellungen zu vereinfachen und zu optimieren und dabei die Interaktion mit dem Benutzer zu minimieren.
 
-### Was es tut
+### Skripte
 
-Das Tool führt die folgenden Aktionen aus:
+Das Repository besteht aus mehreren unterschiedlichen Skripten
 
-- Registriert Winget für die Installation von den default Programmen
-- Setzt die Systemsprache auf Deutsch (Österreich)
-- Aktiviert den Benutzer "Administrator", und deaktiviert W10 und W11
-- Aktiviert die Remote-Desktop-Verbindung und erlaubt jedem Benutzer die Verbindung mit Remote-Desktop
-- Aktiviert die Netzwerkfreigabe und -erkennung
-- Führt mehrere Anpassungen der Energiekonfiguration durch
-- Deaktiviert den Sperrbildschirm, Windows Bing-Suche und Schnellstart
-- Passt die Remote-Desktop-Sicherheit an
-- Aktiviert Dateierweiterungen
-- Setzt das klassische Rechtsklickmenü (Windows 11)
-- Installiert 7zip, Chrome, Firefox, Acrobat Reader, PDFcreator, VLC, OpenJDK 8, OpenJDK 11, FortiClientVPN und TeamViewerQS
-- Aktiviert NET Framework 3.5
-- Kopiert den Remote-Agenten auf den Desktop und wartet auf die Installation, bevor der Installer nach Abschluss des Prozesses gelöscht wird.
-
-### Verbleibende Schritte
-
-Die folgenden Schritte müssen noch ausgeführt werden:
-
-- Setzen des PC-Namens und Beschriftung des PCs
-- Installation der Kundensoftware
-- Installation von Office
+- ads.ps1 - Installiert Active Directory Services, DHCP und DNS Server, und justiert diverse Einstellungen. Dieser Skript ist für Windows Server gemacht.
+- basic.ps1 - Dieser Skript ist als Administrator auszuführen, da dieser Maschinenbezogene änderungen vornimmt, um Windows zuverlässiger, leicher zu Verwalten und weniger aufdringlich macht.
+- das.ps1 - Nimmt alle Programme aus dem Autostart.
+- lang.ps1 - Setzt die Windows Sprache auf de-AT. Dieser Skript ist mit und ohne Admin auszuführen.
+- nfr.ps1 - Network Firewall Rules: aktiviert Netzwerkerkennung, Remotedesktop und die Datei- und Druckerfreigabe.
+- sec.ps1 - Security: Deaktiviert alte TLS Versionen und SMB1
+- srv.ps1 - Deinstalliert Defender, intalliert NetFX3, deaktiviert Server Manager Autostart und justiert die Internet Explorer Sicherheitseinstellungen. Dieser Skript ist für Windows Server gemacht.
+- usr.ps1 - Userbezogener Skript, der die Windows Oberfläche weniger aufdringlich macht. Dieser Skript ist ohne Admin auszuführen.
+- wdt.ps1 - Windows Deployment Tool: Für neue Clients, macht alles was basic.ps1 tut, aber installiert auch noch einige Programme und stellt die powercfg auf High Performance Plan um.
 
 # Wie ausführen?
 
@@ -36,7 +24,5 @@ Um das Tool auszuführen, folgen Sie diesen Schritten:
 
 1. Drücken Sie Windows + X
 2. Wählen Sie Windows PowerShell (Administrator) / Terminal (Administrator)
-3. Geben Sie `irm gump.at/wdt | iex` ein
+3. Geben Sie zum Beispiel `irm gump.at/basic | iex` ein
 4. Drücken Sie Enter
-
-Beachten Sie, dass dieses Tool nur einwandfrei funktioniert, wenn der PC im richtigen Netzwerk ist, da es auch auf eine Netzwerkfreigabe zugreift.
