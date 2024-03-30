@@ -50,3 +50,25 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
 Write-Host "CWA not found. Stopping Script."
 
 }
+
+$paths = @("C:\Program Files (x86)\Advanced Monitoring Agent GP\",
+"C:\Program Files (x86)\Advanced Monitoring Agent\",
+"C:\Program Files (x86)\Take Control Agent\",
+"C:\Program Files (x86)\BeAnywhere Support Express\",
+"C:\ProgramData\GetSupportService_Common_LOGICnow\",
+"C:\ProgramData\GetSupportService_LOGICnow\",
+"C:\ProgramData\GetSupportService\",
+"C:\ProgramData\MspPlatform\",
+"C:\ProgramData\MSPEcosystem\",
+"C:\ProgramData\SolarWinds MSP\",
+"C:\ProgramData\N-able\",
+"C:\ProgramData\N-Able Technologies\"
+)
+
+foreach ($path in $paths) {
+    if (Test-Path $path) {
+        Write-Host "Path '$path' still exists. Reboot and relaunch the scipt to finish deletion"
+    } else {
+        Write-Host "'$path' has been cleaned"
+    }
+}
