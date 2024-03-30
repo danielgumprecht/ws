@@ -51,6 +51,7 @@ Write-Host "CWA not found. Stopping Script."
 
 }
 
+# Check if Paths still exist
 $paths = @("C:\Program Files (x86)\Advanced Monitoring Agent GP\",
 "C:\Program Files (x86)\Advanced Monitoring Agent\",
 "C:\Program Files (x86)\Take Control Agent\",
@@ -67,8 +68,8 @@ $paths = @("C:\Program Files (x86)\Advanced Monitoring Agent GP\",
 
 foreach ($path in $paths) {
     if (Test-Path $path) {
-        Write-Host "Path '$path' still exists. Reboot and relaunch the scipt to finish deletion"
+        Write-Host "Path $path still exists. Reboot and relaunch the scipt to finish deletion"
     } else {
-        Write-Host "'$path' has been cleaned"
+        Write-Host "$path has been cleaned"
     }
 }
