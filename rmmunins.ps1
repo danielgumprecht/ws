@@ -1,8 +1,19 @@
-# kill N-Able services
-$tasksToKill = @("PME.Agent", "FileCacheServiceAgent", "RequestHandlerAgent", "ASupSrvc", "BASupSrvcUpdater", "winagent")
+if (Test-Path "C:\ProgramData\LabTech") {
 
-foreach ($task in $tasksToKill) {
-    Get-Process -Name $task -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction Continue
+Write-Host "CWA directory exists. Launching script..."
+
+# kill N-Able tasks
+$tasks = @(
+    "PME.Agent",
+    "FileCacheServiceAgent",
+    "RequestHandlerAgent",
+    "ASupSrvc",
+    "BASupSrvcUpdater",
+    "winagent"
+)
+
+foreach ($task in $tasks) {
+    Get-Process -Name $task -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
 }
 
 # disable N-Able services
@@ -16,7 +27,7 @@ $services = @(
 )
 
 foreach ($service in $services) {
-    Set-Service -Name $service -StartupType Disabled -ErrorAction Continue
+    Set-Service -Name $service -StartupType Disabled -ErrorAction SilentlyContinue
 }
 
 # Remove N-able install locations, also removes them from services.msc
@@ -32,3 +43,7 @@ Remove-Item "C:\ProgramData\MSPEcosystem\" -recurse -force -ErrorAction Silently
 Remove-Item "C:\ProgramData\SolarWinds MSP\" -recurse -force -ErrorAction SilentlyContinue
 Remove-Item "C:\ProgramData\N-able\" -recurse -force -ErrorAction SilentlyContinue
 Remove-Item "C:\ProgramData\N-Able Technologies\" -recurse -force -ErrorAction SilentlyContinue
+
+} else {
+    Write-Host "CWA not found. Stopping Script."
+}
