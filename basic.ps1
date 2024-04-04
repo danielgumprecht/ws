@@ -52,3 +52,4 @@ powercfg /setdcvalueindex SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 3
 
 # Restart Explorer
 Stop-Process -Name "Explorer" -Force
+Start-Process -Name "Explorer"
