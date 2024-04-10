@@ -1,4 +1,4 @@
-$srv = Read-Host "enter SRV IP"
+$srv = Read-Host "enter Server IP"
 
 # Edge > SRV
 Get-Process -Name msedge -ErrorAction SilentlyContinue | Stop-Process -Force
