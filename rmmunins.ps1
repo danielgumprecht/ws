@@ -9,6 +9,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "FileCacheServiceAgent",
         "RequestHandlerAgent",
         "ASupSrvc",
+        "BASupSrvc",
         "BASupSrvcUpdater",
         "winagent"
     )
