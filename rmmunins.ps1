@@ -12,6 +12,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "BASupSrvc",
         "BASupSrvcCnfg",
         "BASupSrvcUpdater",
+        "Au_",
         "winagent"
     )
 
