@@ -10,6 +10,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "RequestHandlerAgent",
         "ASupSrvc",
         "BASupSrvc",
+        "BASupSrvcCnfg",
         "BASupSrvcUpdater",
         "winagent"
     )
