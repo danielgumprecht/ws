@@ -8,6 +8,8 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "PME.Agent",
         "FileCacheServiceAgent",
         "RequestHandlerAgent",
+        "EcosystemAgent",
+        "EcosystemAgentMaintenance",
         "ASupSrvc",
         "BASupSrvc",
         "BASupSrvcCnfg",
@@ -40,7 +42,9 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
     Remove-Item "C:\Program Files (x86)\Take Control Agent\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\Program Files (x86)\BeAnywhere Support Express\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\Program Files (x86)\N-Able Technologies\" -recurse -force -ErrorAction SilentlyContinue
+    Remove-Item "C:\ProgramData\AdvancedMonitoringAgentWebProtection\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\GetSupportService_Common_LOGICnow\" -recurse -force -ErrorAction SilentlyContinue
+    Remove-Item "C:\ProgramData\GetSupportService_Common\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\GetSupportService_LOGICnow\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\GetSupportService\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\MspPlatform\" -recurse -force -ErrorAction SilentlyContinue
