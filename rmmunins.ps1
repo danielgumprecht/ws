@@ -72,7 +72,5 @@ $paths = @("C:\Program Files (x86)\Advanced Monitoring Agent GP\",
 foreach ($path in $paths) {
     if (Test-Path $path) {
         Write-Host "Path $path still exists. Reboot and relaunch the scipt to finish deletion"
-    } else {
-        Write-Host "$path has been cleaned"
-    }
+    } else {}
 }
