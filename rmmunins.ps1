@@ -15,7 +15,8 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "BASupSrvcCnfg",
         "BASupSrvcUpdater",
         "Au_",
-        "winagent"
+        "winagent",
+        "WebProtection"
     )
 
     foreach ($task in $tasks) {
@@ -33,7 +34,8 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "BASupportExpressSrvcUpdater_LOGICnow",
         "Advanced Monitoring Agent",
         "EcosystemAgent",
-        "EcosystemAgentMaintenance"
+        "EcosystemAgentMaintenance",
+        "WebProtection"
     )
 
     foreach ($service in $services) {
@@ -41,6 +43,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
     }
 
     # Remove N-able install locations, also removes them from services.msc
+    Remove-Item "C:\Program Files\Advanced Monitoring Agent Web Protection\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\Program Files (x86)\Advanced Monitoring Agent GP\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\Program Files (x86)\Advanced Monitoring Agent\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\Program Files (x86)\Take Control Agent\" -recurse -force -ErrorAction SilentlyContinue
