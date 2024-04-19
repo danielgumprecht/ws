@@ -27,6 +27,8 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "PME.Agent.PmeService",
         "SolarWinds.MSP.CacheService",
         "SolarWinds.MSP.RpcServerService",
+        "SolarWinds.MSP.Ecosystem.WindowsAgent",
+        "SolarWinds.MSP.Ecosystem.WindowsAgentMaint",
         "BASupportExpressStandaloneService_LOGICnow",
         "BASupportExpressSrvcUpdater_LOGICnow",
         "Advanced Monitoring Agent"
