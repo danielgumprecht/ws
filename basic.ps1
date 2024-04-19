@@ -50,6 +50,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\P
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "DisableLogonBackgroundImage" -Value 1 -Force -ErrorAction SilentlyContinue
 
 # Disable Lockscreen
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization"
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name "NoLockScreen" -Value 1 -Force -ErrorAction SilentlyContinue
 
 # Set Powerbutton to Shutdown
