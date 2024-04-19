@@ -61,7 +61,8 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
     Remove-Item "C:\ProgramData\N-Able Technologies\" -recurse -force -ErrorAction SilentlyContinue
 
 # Check if Paths still exist
-$paths = @("C:\Program Files (x86)\Advanced Monitoring Agent GP\",
+$paths = @("C:\Program Files\Advanced Monitoring Agent Web Protection\",
+"C:\Program Files (x86)\Advanced Monitoring Agent GP\",
 "C:\Program Files (x86)\Advanced Monitoring Agent\",
 "C:\Program Files (x86)\Take Control Agent\",
 "C:\Program Files (x86)\BeAnywhere Support Express\",
