@@ -5,19 +5,11 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
 
     # kill N-Able tasks
     $tasks = @(
-        "PME.Agent.PmeService",
-        "SolarWinds.MSP.CacheService",
-        "SolarWinds.MSP.RpcServerService",
-        "SolarWinds.MSP.Ecosystem.WindowsAgent",
-        "SolarWinds.MSP.Ecosystem.WindowsAgentMaint",
-        "BASupportExpressStandaloneService_LOGICnow",
-        "BASupportExpressSrvcUpdater_LOGICnow",
-        "Advanced Monitoring Agent",
         "PME.Agent",
         "FileCacheServiceAgent",
         "RequestHandlerAgent",
-        "Ecosystem Agent",
-        "Ecosystem Agent Maintenance",
+        "EcosystemAgent",
+        "EcosystemAgentMaintenance",
         "ASupSrvc",
         "BASupSrvc",
         "BASupSrvcCnfg",
@@ -36,21 +28,12 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "SolarWinds.MSP.CacheService",
         "SolarWinds.MSP.RpcServerService",
         "SolarWinds.MSP.Ecosystem.WindowsAgent",
-        "SolarWinds.MSP.Ecosystem.WindowsAgentMaint",
+        "SolarWinds.MSP.Ecosystem.WindowsAgent",
         "BASupportExpressStandaloneService_LOGICnow",
         "BASupportExpressSrvcUpdater_LOGICnow",
         "Advanced Monitoring Agent",
-        "PME.Agent",
-        "FileCacheServiceAgent",
-        "RequestHandlerAgent",
-        "Ecosystem Agent",
-        "Ecosystem Agent Maintenance",
-        "ASupSrvc",
-        "BASupSrvc",
-        "BASupSrvcCnfg",
-        "BASupSrvcUpdater",
-        "Au_",
-        "winagent"
+        "EcosystemAgent",
+        "EcosystemAgentMaintenance"
     )
 
     foreach ($service in $services) {
