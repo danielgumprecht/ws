@@ -39,6 +39,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
     Remove-Item "C:\Program Files (x86)\Advanced Monitoring Agent\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\Program Files (x86)\Take Control Agent\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\Program Files (x86)\BeAnywhere Support Express\" -recurse -force -ErrorAction SilentlyContinue
+    Remove-Item "C:\Program Files (x86)\N-Able Technologies\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\GetSupportService_Common_LOGICnow\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\GetSupportService_LOGICnow\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\GetSupportService\" -recurse -force -ErrorAction SilentlyContinue
@@ -47,12 +48,6 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
     Remove-Item "C:\ProgramData\SolarWinds MSP\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\N-able\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\N-Able Technologies\" -recurse -force -ErrorAction SilentlyContinue
-
-} else {
-
-Write-Host "CWA not found. Stopping Script."
-
-}
 
 # Check if Paths still exist
 $paths = @("C:\Program Files (x86)\Advanced Monitoring Agent GP\",
@@ -74,3 +69,10 @@ foreach ($path in $paths) {
         Write-Host "Path $path still exists. Reboot and relaunch the scipt to finish deletion"
     } else {}
 }
+
+} else {
+
+Write-Host "CWA not found. Stopping Script."
+
+}
+
