@@ -7,4 +7,5 @@ Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileLis
 # Delete user folder
 Remove-Item -Path "C:\Users\$username" -Recurse -Force
 
+# Inform about deletion
 Write-Host "User $username has been deleted."
