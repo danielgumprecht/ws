@@ -17,6 +17,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "Au_",
         "winagent",
         "WebProtection"
+        "TCLauncherHelper"
     )
 
     foreach ($task in $tasks) {
