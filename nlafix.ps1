@@ -1,5 +1,3 @@
-# nlafix
-
 # enable and start Services
 $services = @(
     "RpcSs",
