@@ -13,7 +13,6 @@ Start-Service -Name $service
 }
 
 # set Firewall Rules
-Enable-NetFirewallRule -DisplayGroup "Remotedesktop"
 Enable-NetFirewallRule -DisplayGroup "Netzwerkerkennung"
 Enable-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
 
