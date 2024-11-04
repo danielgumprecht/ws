@@ -16,7 +16,7 @@ Start-Service -Name $service
 Enable-NetFirewallRule -DisplayGroup "Netzwerkerkennung"
 Enable-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
 
-#set Dependencies for NLA
+# set Dependencies for NLA
 sc.exe config nlasvc depend= NSI/RpcSs/TcpIp/Dhcp/Eventlog/DNS
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters" -Name "AlwaysExpectDomainController" -Value 1 -Type DWORD
 
