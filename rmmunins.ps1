@@ -16,8 +16,12 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "BASupSrvcUpdater",
         "Au_",
         "winagent",
-        "WebProtection"
-        "TCLauncherHelper"
+        "WebProtection",
+        "TCLauncherHelper",
+        "TakeControlRDLdr",
+        "TakeControlRDViewer",
+        "SolarWinds.MSP.Ecosystem.WindowsAgent",
+        "SolarWinds.MSP.Ecosystem.WindowsAgentMaint"
     )
 
     foreach ($task in $tasks) {
@@ -30,7 +34,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "SolarWinds.MSP.CacheService",
         "SolarWinds.MSP.RpcServerService",
         "SolarWinds.MSP.Ecosystem.WindowsAgent",
-        "SolarWinds.MSP.Ecosystem.WindowsAgent",
+        "SolarWinds.MSP.Ecosystem.WindowsAgentMaint",
         "BASupportExpressStandaloneService_LOGICnow",
         "BASupportExpressSrvcUpdater_LOGICnow",
         "Advanced Monitoring Agent",
