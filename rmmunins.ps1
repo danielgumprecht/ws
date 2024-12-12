@@ -87,7 +87,7 @@ $paths = @("C:\Program Files\Advanced Monitoring Agent Web Protection\",
 
 foreach ($path in $paths) {
     if (Test-Path $path) {
-        Write-Host "Path $path still exists. Reboot and relaunch the scipt to finish deletion"
+        Write-Host "Path $path still exists. Reboot and relaunch the script to finish deletion"
     } else {}
 }
 
