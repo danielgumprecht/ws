@@ -15,4 +15,4 @@ Enable-NetFirewallRule -DisplayGroup "Netzwerkerkennung"
 Enable-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
 
 # set Dependencies for NLA
-sc.exe config nlasvc depend= NSI/RpcSs/TcpIp/Dhcp/Eventlog/DNS
+sc.exe config nlasvc depend= NSI/RpcSs/TcpIp/Eventlog/DNS
