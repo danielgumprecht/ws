@@ -1,10 +1,3 @@
----
-title: Script Documentation - nlafix.ps1
-layout: default
-tags:
-  - PowerShell
-  - Windows
----
 ## nlafix
 
 Dieses Skript konfiguriert die grundlegende Netzwerkunterstützung durch Starten bestimmter Dienste, Aktivieren wichtiger Firewall-Regeln und Einrichten von Abhängigkeiten für den Netzwerkstandort-Dienst.

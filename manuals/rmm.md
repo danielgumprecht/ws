@@ -1,10 +1,3 @@
----
-title: Script Documentation - rmm.ps1
-layout: default
-tags:
-  - PowerShell
-  - Windows
----
 ## Remote Monitoring & Management - Removal Skript
 
 ### Ausführen

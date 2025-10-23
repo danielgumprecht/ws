@@ -1,12 +1,3 @@
----
-title: Script Documentation - basic.ps1
-layout: default
-tags:
-  - PowerShell
-  - Windows
----
-## gump.at/basic
-
 ### Hier ist eine detaillierte Erklärung zu jedem Schritt des Skripts:
 
 1. **Set Windows Language to de-AT**: setzt die Systemsprache und die Benutzeroberflächensprache auf Deutsch (Österreich).
