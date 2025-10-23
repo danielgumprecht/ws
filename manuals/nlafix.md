@@ -1,42 +1,21 @@
-## nlafix
+# nlafix
 
-Dieses Skript konfiguriert die grundlegende Netzwerkunterstützung durch Starten bestimmter Dienste, Aktivieren wichtiger Firewall-Regeln und Einrichten von Abhängigkeiten für den Netzwerkstandort-Dienst.
+## This PowerShell script does the following:
 
-### Dieses PowerShell Skript macht folgendes:
+1.	Enable and start services: It iterates through a list of services (RpcSs, SSDPSRV, upnphost). Each service is set to start automatically at system startup, then the service is started.
+2. Set firewall rules: The Windows Firewall rules for “Network Discovery” and “File and Printer Sharing” are enabled to allow network features and shares.
+3.	Set dependencies for the NLA service: nlasvc (Network Location Awareness) is configured to depend on several other services (NSI, RpcSs, TcpIp, Dhcp, Eventlog, DNS). This ensures these dependencies are available when NLA starts.
 
-1.	**Aktivieren und Starten von Diensten:** Eine Liste von Diensten (RpcSs, SSDPSRV, upnphost) wird durchlaufen. Jeder Dienst in der Liste wird so konfiguriert, dass er beim Systemstart automatisch startet, und anschließend wird der Dienst gestartet.
-2.	**Firewall-Regeln setzen:** Die Regeln für „Netzwerkerkennung“ und „Datei- und Druckerfreigabe“ in der Windows-Firewall werden aktiviert, um Netzwerkfunktionen und Freigaben zu ermöglichen.
-3.	**Festlegen von Abhängigkeiten für den NLA-Dienst:** Der nlasvc (Network Location Awareness Service) wird so konfiguriert, dass er von mehreren anderen Diensten abhängt (NSI, RpcSs, TcpIp, Dhcp, Eventlog, DNS). Dies stellt sicher, dass diese Abhängigkeiten beim Start von NLA verfügbar sind.
+## Technical explanation
 
-### Code
+- Sets three services to Automatic that Network Discovery depends on, then starts them in the correct order > activates the services required for Network Discovery.
+- Re-enables all firewall rules for Network Discovery and File and Printer Sharing > ensures Network Discovery is actually enabled.
+- Adds DNS as an additional dependency for the Network Location Awareness service > improves the reliability of Network Discovery, since DNS must be running for NLA to detect the correct network environment (if the network location is incorrect, the NLA service needs a restart after these changes).
 
-```powershell
-# enable and start Services
-$services = @(
-    "RpcSs",
-    "SSDPSRV",
-    "upnphost"
-)
+## Execution
 
-foreach ($service in $services) {
-Set-Service -Name $service -StartupType Automatic -ErrorAction SilentlyContinue
-Start-Service -Name $service
-}
+Important Note: This scipt should be only executed on Active Directory Domain Controllers. If you want to still execute it on non DC Windows Servers please remove the last line from the ps1 file: `sc.exe config nlasvc depend= NSI/RpcSs/TcpIp/Eventlog/DNS`
 
-# set Firewall Rules
-Enable-NetFirewallRule -DisplayGroup "Netzwerkerkennung"
-Enable-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
-
-# set Dependencies for NLA
-sc.exe config nlasvc depend= NSI/RpcSs/TcpIp/Eventlog/DNS
-````
-
-### Technische Erklärung
-- Setzt drei Services auf Automatisch, welche Abhängigkeiten der Netzwerkerkennung sind, und Startet diese im Anschluss in der richtigen Reihenfolge > aktiviert die notwendigen Dienste für die Netzwerkerkennung
-- Aktiviert nochmal alle Firewall Rules für die Netzwerkerkennung und die Datei und Druckerfreigabe > stellt sicher dass die Netzwerkerkennung tatsächlich aktiviert ist
-- Fügt dem Service Network Location Awareness noch DNS als Abhängigkeit hinzu > sorgt für eine zuverlässigere Netzwerkerkennung, da DNS laufen muss, dass die NLA die richtige Netzwerkumgebung erkennen kann (wenn Network Location falsch ist dann braucht der NLA Service nach diesen Änderungen einen Neustart)
-
-### Das Skript kann man wie folgt auf Servern ausführen:
-
-- PowerShell als Administrator starten und folgendes eingeben:  
-- `irm gump.at/nlafix | iex`
+- press `Windows + R` on Keyboard > on the Bottom left Windows Run Prompt opens
+- type `powershell` then press `Shift + Control + Enter` > opens Powershell with elevated Permissions
+- In Powershell type `irm gump.at/nlafix | iex` > executes the .ps1 script from `https://raw.githubusercontent.com/danielgumprecht/ws/refs/heads/main/nlafix.ps1`
