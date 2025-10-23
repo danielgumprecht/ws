@@ -1,11 +1,5 @@
 # N-Able Remote Monitoring & Management - Removal Skript
 
-## Run
-1.	Press Windows + X. A black menu with shortcuts to various settings opens on the taskbar.
-2.	Click PowerShell (Administrator).
-3.	Type irm gump.at/rmm | iex and press Enter.
-4.	This script checks whether CWA is installed, then removes the remote monitoring and all related services.
-
 ## Details
 1.	Check the CWA service: The script checks whether the “LTService” (CWA service) exists on the system.
 2.	Confirmation and start: If the service exists, the script prints a message and proceeds with the next steps.
