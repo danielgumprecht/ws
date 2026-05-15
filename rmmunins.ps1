@@ -21,7 +21,8 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "TakeControlRDLdr",
         "TakeControlRDViewer",
         "SolarWinds.MSP.Ecosystem.WindowsAgent",
-        "SolarWinds.MSP.Ecosystem.WindowsAgentMaint"
+        "SolarWinds.MSP.Ecosystem.WindowsAgentMaint",
+        "concentrator"
     )
 
     foreach ($task in $tasks) {
@@ -40,7 +41,8 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
         "Advanced Monitoring Agent",
         "EcosystemAgent",
         "EcosystemAgentMaintenance",
-        "WebProtection"
+        "WebProtection",
+        "svcDrydock"
     )
 
     foreach ($service in $services) {
