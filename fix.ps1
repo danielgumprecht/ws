@@ -1,4 +1,4 @@
 chkdsk /scan /perf
-/sfc scannow
+sfc /scannow
 dism /online /cleanup-image /restorehealth
 Write-Output "System check complete. Please review the results above for any issues."
