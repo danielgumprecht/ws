@@ -32,8 +32,10 @@ Remove-Item -Path "$env:localappdata\Microsoft\Edge\User Data\Default\Cache\*" -
 
 Write-Host "Cleaning up Windows Update and installation files..." -ForegroundColor Cyan
 
-Remove-Item -Path "C:\$WINDOWS.~BT" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
-Remove-Item -Path "C:\$WINDOWS.~WS" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
-Remove-Item -Path "C:\Windows.old" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\SWSetup" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\Log Files" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\hpswsetup" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\system.sav" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\OneDriveTemp" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 
 Write-Host "System cleanup completed!" -ForegroundColor Green
