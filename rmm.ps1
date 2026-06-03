@@ -1,9 +1,9 @@
 # Check if CWA service exists
 if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
 
-    Write-Host "CWA service exists. Launching script..."
+    Write-Host "CWA service exists. Launching script..." -ForegroundColor Cyan
 
-    # kill N-Able tasks
+    Write-Host "kill N-Able tasks" -ForegroundColor Cyan
     $tasks = @(
         "PME.Agent",
         "FileCacheServiceAgent",
@@ -29,7 +29,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
     Get-Process -Name $task -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
     }
 
-    # disable N-Able services
+    Write-Host "disable N-Able services" -ForegroundColor Cyan
     $services = @(
         "PME.Agent.PmeService",
         "SolarWinds.MSP.CacheService",
@@ -49,7 +49,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
     Set-Service -Name $service -StartupType Disabled -ErrorAction SilentlyContinue
     }
 
-    # Remove N-able install locations, also removes them from services.msc
+    Write-Host "Remove N-able install locations, also removes them from services.msc" -ForegroundColor Cyan
     Remove-Item "C:\Program Files\Advanced Monitoring Agent Web Protection\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\Program Files (x86)\Advanced Monitoring Agent GP\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\Program Files (x86)\Advanced Monitoring Agent\" -recurse -force -ErrorAction SilentlyContinue
@@ -68,7 +68,7 @@ if (Get-Service -Name "LTService" -ErrorAction SilentlyContinue) {
     Remove-Item "C:\ProgramData\N-able\" -recurse -force -ErrorAction SilentlyContinue
     Remove-Item "C:\ProgramData\N-Able Technologies\" -recurse -force -ErrorAction SilentlyContinue
 
-# Check if Paths still exist
+Write-Host "Check if Paths still exist" -ForegroundColor Cyan
 $paths = @("C:\Program Files\Advanced Monitoring Agent Web Protection\",
 "C:\Program Files (x86)\Advanced Monitoring Agent GP\",
 "C:\Program Files (x86)\Advanced Monitoring Agent\",
@@ -89,13 +89,13 @@ $paths = @("C:\Program Files\Advanced Monitoring Agent Web Protection\",
 
 foreach ($path in $paths) {
     if (Test-Path $path) {
-        Write-Host "Path $path still exists. Reboot and relaunch the script to finish deletion"
+        Write-Host "Path $path still exists. Reboot and relaunch the script to finish deletion" -ForegroundColor Cyan
     } else {}
 }
 
 } else {
 
-Write-Host "CWA not found. Stopping Script."
+Write-Host "CWA not found. Stopping Script." -ForegroundColor Red
 
 }
 
