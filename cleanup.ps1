@@ -37,5 +37,6 @@ Remove-Item -Path "C:\Log Files" -Recurse -Force -Verbose -ErrorAction SilentlyC
 Remove-Item -Path "C:\hpswsetup" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item -Path "C:\system.sav" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item -Path "C:\OneDriveTemp" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\ProgramDataLogs" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 
 Write-Host "System cleanup completed!" -ForegroundColor Green
