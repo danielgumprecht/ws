@@ -1,7 +1,17 @@
 Write-Host "Starting system cleanup..." -ForegroundColor Cyan
 
-cleanmgr /verylowdisk
-cleanmgr /autoclean
+$Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches"
+
+Get-ChildItem $Path | ForEach-Object {
+    New-ItemProperty `
+        -Path $_.PsPath `
+        -Name "StateFlags0001" `
+        -Value 2 `
+        -PropertyType DWord `
+        -Force | Out-Null
+}
+
+cleanmgr /sagerun:1
 
 DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 
