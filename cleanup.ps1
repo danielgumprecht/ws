@@ -39,4 +39,6 @@ Remove-Item -Path "C:\system.sav" -Recurse -Force -Verbose -ErrorAction Silently
 Remove-Item -Path "C:\OneDriveTemp" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item -Path "C:\ProgramDataLogs" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 
+Remove-Item 'C:\$WINDOWS.~BT' -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+
 Write-Host "System cleanup completed!" -ForegroundColor Green
