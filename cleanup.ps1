@@ -52,4 +52,11 @@ Remove-Item -Path "C:\ProgramDataLogs" -Recurse -Force -Verbose -ErrorAction Sil
 Remove-Item 'C:\$WINDOWS.~BT' -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item 'C:\W11' -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 
+Write-Host "Hiding system folders to prevent accidental deletion..." -ForegroundColor Cyan
+
+attrib +h 'C:\inetpub'
+attrib +h 'C:\PerfLogs'
+attrib +h 'C:\Intel'
+attrib +h 'C:\AMD'
+
 Write-Host "System cleanup completed!" -ForegroundColor Green
