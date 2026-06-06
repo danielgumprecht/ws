@@ -40,16 +40,23 @@ Write-Host "Cleaning up browser caches..." -ForegroundColor Cyan
 Remove-Item -Path "$env:localappdata\Google\Chrome\User Data\Default\Cache\*" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item -Path "$env:localappdata\Microsoft\Edge\User Data\Default\Cache\*" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 
-Write-Host "Cleaning up Windows Update and installation files..." -ForegroundColor Cyan
+Write-Host "Cleaning up temporary files..." -ForegroundColor Cyan
 
-Remove-Item -Path "C:\SWSetup" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\temp" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item -Path "C:\Log Files" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
-Remove-Item -Path "C:\hpswsetup" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item -Path "C:\system.sav" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item -Path "C:\OneDriveTemp" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item -Path "C:\ProgramDataLogs" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 
 Remove-Item 'C:\$WINDOWS.~BT' -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 Remove-Item 'C:\W11' -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+
+Write-Host "Cleaning up vendor-specific temporary files..." -ForegroundColor Cyan
+
+Remove-Item -Path "C:\hpswsetup" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\nabletemp" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\SWSetup" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\compaq" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
+Remove-Item -Path "C:\hp" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
 
 Write-Host "System cleanup completed!" -ForegroundColor Green
